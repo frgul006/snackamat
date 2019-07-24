@@ -44,15 +44,16 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/contentful', '~/plugins/vue-moment.js'],
+  plugins: ['~/plugins/contentful'],
   /*
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/vuetify',
+    ['@nuxtjs/vuetify', { treeShake: true }],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/moment'
   ],
   /*
    ** Axios module configuration
