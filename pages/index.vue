@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ArticlePreview from '~/components/articlepreview.vue'
+import ArticlePreview from '~/components/ArticlePreview.vue'
 
 export default {
   head: {
