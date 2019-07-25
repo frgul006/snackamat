@@ -1,10 +1,8 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex>
-        <v-flex xs8>
-          <ArticlePreview :article="article" v-for="article in articles" :key="article.sys.id"></ArticlePreview>
-        </v-flex>
+  <v-container grid-list-lg>
+    <v-layout wrap>
+      <v-flex sm4 v-for="article in articles" :key="article.sys.id">
+        <ArticlePreview :article="article"></ArticlePreview>
       </v-flex>
     </v-layout>
   </v-container>

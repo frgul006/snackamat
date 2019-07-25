@@ -9,6 +9,10 @@ module.exports = {
     CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN
   },
   mode: 'universal',
+  manifest: {
+    name: 'snackamat.se',
+    lang: 'sv'
+  },
   /*
    ** Headers of the page
    */
@@ -66,8 +70,8 @@ module.exports = {
    */
   vuetify: {
     theme: {
-      primary: colors.blue.darken2,
-      accent: colors.grey.darken3,
+      primary: '#9A451F',
+      accent: '#07AA6E',
       secondary: colors.amber.darken3,
       info: colors.teal.lighten1,
       warning: colors.amber.base,

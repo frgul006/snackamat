@@ -2,6 +2,8 @@
 
 > My personal food blog
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bb05dd56-472a-43cc-8578-8fe8cf35f51c/deploy-status)](https://app.netlify.com/sites/competent-jepsen-29800a/deploys)
+
 ## Build Setup
 
 ```bash
