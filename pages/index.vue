@@ -20,7 +20,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Foodis is a site dedicated to food.'
+        content: 'snackamat.se is a site dedicated to food.'
       }
     ]
   },

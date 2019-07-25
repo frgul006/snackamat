@@ -1,4 +1,4 @@
-# foodis
+# snackamat
 
 > My personal food blog
 

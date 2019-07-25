@@ -1,13 +1,13 @@
 <template>
-  <div class="foodis-header">
-    <nuxt-link class="foodis-header__home" :to="{ path: '/' }">
-      Foodis
+  <div class="snackamat-header">
+    <nuxt-link class="snackamat-header__home" :to="{ path: '/' }">
+      snackamat
     </nuxt-link>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.foodis-header {
+.snackamat-header {
   &__home {
     display: flex;
     align-items: center;

@@ -1,14 +1,14 @@
 <template>
-  <article class="foodis-article-preview mb-4">
+  <article class="snackamat-article-preview mb-4">
     <v-card>
       <v-img height="200px" :src="article.fields.image.fields.file.url + '?fit=scale&w=350&h=300&q=75'" :srcset="`${article.fields.image.fields.file.url}?w=350&h=300&fit=fill&q=75 350w, ${article.fields.image.fields.file.url}?w=600&h=300&fit=fill&q=75 1000w, ${article.fields.image.fields.file.url}?w=600&h=300&fit=fill&q=75 2000w`" sizes="(min-width: 1024px) 400px, 100vw">
       </v-img>
       <v-card-title>
         <div>
           <h4>
-            <nuxt-link :to="{ name: 'slug', params: { slug: article.fields.slug }}" class="foodis-article-preview__title">{{ article.fields.title }}</nuxt-link>
+            <nuxt-link :to="{ name: 'slug', params: { slug: article.fields.slug }}" class="snackamat-article-preview__title">{{ article.fields.title }}</nuxt-link>
           </h4>
-          <p class="foodis-article-preview__date">{{article.fields.publishedAt | moment("dddd, MMMM Do YYYY") }}</p>
+          <p class="snackamat-article-preview__date">{{article.fields.publishedAt | moment("dddd, MMMM Do YYYY") }}</p>
           <p>{{ article.fields.summary }}</p>
         </div>
       </v-card-title>
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
-.foodis-article-preview {
+.snackamat-article-preview {
   .v-image__image {
     transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -37,7 +37,7 @@ export default {
 </style>
 
 <style scoped lang="scss">
-.foodis-article-preview {
+.snackamat-article-preview {
   &__thumbnail {
     margin-bottom: 1em;
     max-width: 100%;

@@ -1,12 +1,12 @@
 <template>
   <v-app>
     <v-toolbar app dark prominent height="100px">
-      <div class="foodis-toolbar">
+      <div class="snackamat-toolbar">
         <Header></Header>
       </div>
     </v-toolbar>
     <v-content>
-      <v-container fluid class="foodis-content">
+      <v-container fluid class="snackamat-content">
         <nuxt/>
       </v-container>
     </v-content>
@@ -14,10 +14,10 @@
 </template>
 
 <style lang="scss">
-.foodis-content {
+.snackamat-content {
   margin-bottom: 150px;
 }
-.foodis-toolbar {
+.snackamat-toolbar {
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
