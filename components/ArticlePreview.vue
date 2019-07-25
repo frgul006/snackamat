@@ -1,18 +1,19 @@
 <template>
-  <article class="snackamat-article-preview mb-4">
-    <v-card>
-      <v-img height="200px" :src="article.fields.image.fields.file.url + '?fit=scale&w=350&h=300&q=75'" :srcset="`${article.fields.image.fields.file.url}?w=350&h=300&fit=fill&q=75 350w, ${article.fields.image.fields.file.url}?w=600&h=300&fit=fill&q=75 1000w, ${article.fields.image.fields.file.url}?w=600&h=300&fit=fill&q=75 2000w`" sizes="(min-width: 1024px) 400px, 100vw">
-      </v-img>
-      <v-card-title>
-        <div>
-          <h4>
-            <nuxt-link :to="{ name: 'slug', params: { slug: article.fields.slug }}" class="snackamat-article-preview__title">{{ article.fields.title }}</nuxt-link>
-          </h4>
-          <p class="snackamat-article-preview__date">{{article.fields.publishedAt | moment("dddd, MMMM Do YYYY") }}</p>
-          <p>{{ article.fields.summary }}</p>
-        </div>
-      </v-card-title>
-    </v-card>
+  <article class="snackamat-article-preview">
+    <nuxt-link class="snackamat-article-preview__link" :to="{ name: 'slug', params: { slug: article.fields.slug }}">
+      <v-card>
+        <v-img height="200px" :src="article.fields.image.fields.file.url + '?fit=scale&w=350&h=300&q=75'" :srcset="`${article.fields.image.fields.file.url}?w=350&h=300&fit=fill&q=75 350w, ${article.fields.image.fields.file.url}?w=600&h=300&fit=fill&q=75 1000w, ${article.fields.image.fields.file.url}?w=600&h=300&fit=fill&q=75 2000w`" sizes="(min-width: 1024px) 400px, 100vw">
+        </v-img>
+        <v-card-title>
+          <div>
+            <h4 class="snackamat-article-preview__title">{{ article.fields.title }}
+            </h4>
+            <p class="snackamat-article-preview__date">{{article.fields.publishedAt | moment("dddd, MMMM Do YYYY") }}</p>
+            <p>{{ article.fields.summary }}</p>
+          </div>
+        </v-card-title>
+      </v-card>
+    </nuxt-link>
   </article>
 </template>
 
@@ -24,8 +25,29 @@ export default {
 
 <style lang="scss">
 .snackamat-article-preview {
+  height: 100%;
+
+  &__link {
+    &:hover,
+    &:focus {
+      .v-card {
+        box-shadow: 0px 8px 9px -5px rgba(0, 0, 0, 0.2),
+          0px 15px 22px 2px rgba(0, 0, 0, 0.14),
+          0px 6px 28px 5px rgba(0, 0, 0, 0.12) !important;
+      }
+    }
+  }
+
+  .v-card {
+    height: 100%;
+  }
+
+  .v-card__title {
+    flex-grow: 1;
+  }
+
   .v-image__image {
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
@@ -43,15 +65,13 @@ export default {
     max-width: 100%;
   }
 
-  &__title {
+  &__link {
     text-decoration: none;
+  }
+
+  &__title {
     font-size: 22px;
     color: #373f49;
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
   }
 
   &__date {

@@ -2,11 +2,6 @@
   <v-container>
     <v-layout>
       <div v-if="article" class="snackamat-article">
-        <div class="snackamat-article__header">
-          <h1>
-            {{ article.fields.title }}
-          </h1>
-        </div>
         <div class="snackamat-article__img">
           <v-img :aspect-ratio="10/3" :src="article.fields.image.fields.file.url + '?fit=scale&w=350&h=120'" :srcset="`${article.fields.image.fields.file.url}?w=350&h=120&fit=fill&q=75 350w, ${article.fields.image.fields.file.url}?w=1000&h=300&fit=fill&q=75 1000w, ${article.fields.image.fields.file.url}?w=2000&h=600&fit=fill&q=75 2000w`" sizes="(min-width: 1024px) 400px, 100vw">
             <template v-slot:placeholder>
@@ -15,6 +10,11 @@
               </v-layout>
             </template>
           </v-img>
+        </div>
+        <div class="snackamat-article__header">
+          <h1>
+            {{ article.fields.title }}
+          </h1>
         </div>
         <main class="snackamat-article__content" v-html="richTextHtml"></main>
       </div>
@@ -34,6 +34,9 @@
 
   &__img {
     margin-bottom: 1rem;
+    margin-left: -72px;
+    margin-right: -72px;
+    margin-top: -48px;
   }
 
   h1,

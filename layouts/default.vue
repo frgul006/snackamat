@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar app dark prominent height="100px">
+    <v-toolbar app prominent height="70px">
       <div class="snackamat-toolbar">
         <Header></Header>
       </div>
