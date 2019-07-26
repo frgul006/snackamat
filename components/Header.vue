@@ -54,6 +54,8 @@
     display: flex;
     align-items: center;
     max-width: 250px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 
     img {
       width: 100%;
