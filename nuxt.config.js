@@ -70,13 +70,13 @@ module.exports = {
    */
   vuetify: {
     theme: {
-      primary: '#9A451F',
-      accent: '#07AA6E',
-      secondary: colors.amber.darken3,
-      info: colors.teal.lighten1,
-      warning: colors.amber.base,
-      error: colors.deepOrange.accent4,
-      success: colors.green.accent3
+      primary: '#ff9800',
+      secondary: '#ff5722',
+      accent: '#795548',
+      error: '#f44336',
+      warning: '#ffc107',
+      info: '#607d8b',
+      success: '#4caf50'
     }
   },
   /*

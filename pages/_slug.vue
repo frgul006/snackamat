@@ -37,6 +37,12 @@
     margin-left: -72px;
     margin-right: -72px;
     margin-top: -48px;
+
+    @media only screen and (max-width: 959px) {
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-top: -16px;
+    }
   }
 
   h1,
