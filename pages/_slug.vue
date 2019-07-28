@@ -28,9 +28,7 @@
 
 <style lang="scss">
 .snackamat-article {
-  &__header {
-    margin-bottom: 1rem;
-  }
+  flex-grow: 1;
 
   &__img {
     margin-bottom: 1rem;

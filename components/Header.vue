@@ -1,7 +1,7 @@
 <template>
   <div class="snackamat-header">
     <nuxt-link class="snackamat-header__home" :to="{ path: '/' }">
-      <img src="logo.svg">
+      <img src="/logo.svg">
     </nuxt-link>
     <v-spacer></v-spacer>
     <div class="hidden-xs-only">
@@ -11,35 +11,23 @@
     </div>
     <v-menu :offset-y="true">
       <template v-slot:activator="{ on }">
-        <v-btn v-on="on" outlined dark class="hidden-sm-and-up">
+        <v-btn v-on="on" outlined dark class="snackamat-header__menu-btn hidden-sm-and-up">
           <v-icon>menu</v-icon>
         </v-btn>
       </template>
 
-      <v-list>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recipies' }" nuxt> Recept </v-btn>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-btn class="snackamat-header__link" :to="{ path: '/about' }" nuxt> Om oss </v-btn>
-            </v-list-item-title>
-          </v-list-item-content>
+      <ul class="snackamat-header__menu">
+        <li class="snackamat-header__menu-item">
+          <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recipies' }" nuxt> Recept </v-btn>
+        </li>
+        <li class="snackamat-header__menu-item">
+          <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
+        </li>
+        <li class="snackamat-header__menu-item">
+          <v-btn class="snackamat-header__link" :to="{ path: '/about' }" nuxt> Om oss </v-btn>
+        </li>
+      </ul>
 
-        </v-list-item>
-      </v-list>
     </v-menu>
   </div>
 </template>
@@ -60,6 +48,17 @@
     img {
       width: 100%;
     }
+  }
+
+  &__menu-btn {
+    min-width: inherit;
+  }
+
+  &__menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
   }
 }
 </style>

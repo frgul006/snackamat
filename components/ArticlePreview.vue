@@ -8,7 +8,7 @@
           <div>
             <h4 class="snackamat-article-preview__title">{{ article.fields.title }}
             </h4>
-            <p class="snackamat-article-preview__date">{{article.fields.publishedAt | moment("dddd, MMMM Do YYYY") }}</p>
+            <p class="snackamat-article-preview__date">{{article.fields.publishedAt | moment("from", "now") }}</p>
             <p>{{ article.fields.summary }}</p>
           </div>
         </v-card-title>
