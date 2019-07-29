@@ -76,7 +76,7 @@ export default class Slug extends Vue {
   @article.Getter('currentArticle') article!: Article
 
   head() {
-    let canonical = `https://snackamat.se${this.$route.path}`
+    let canonical = `https://snackamat.se${this.$route.path}/`
 
     return {
       title: this.article.fields.title,

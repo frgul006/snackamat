@@ -1,7 +1,7 @@
 {
-  "name": "snackamat",
+  "name": "snackamat.se",
   "version": "1.0.6",
-  "description": "My personal website",
+  "description": "Receptsamling och allmänna artiklar rörande mat.",
   "author": "Fredrik Gullberg",
   "private": true,
   "scripts": {

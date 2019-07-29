@@ -36,7 +36,7 @@ export class MetaService {
       {
         hid: 'og:title',
         name: 'og:title',
-        content: article.fields.title + '| snackamat.se'
+        content: article.fields.title + ' | snackamat.se'
       },
       {
         hid: 'og:url',
@@ -66,7 +66,7 @@ export class MetaService {
       {
         hid: 'twitter:title',
         name: 'twitter:title',
-        content: article.fields.title + '| snackamat.se'
+        content: article.fields.title + ' | snackamat.se'
       },
       {
         hid: 'twitter:description',
