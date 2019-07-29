@@ -1,14 +1,16 @@
 <template>
-  <v-app dark>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
+  <v-app>
+    <v-container>
+      <h1>
+        {{ title }}
+      </h1>
+      <p>
+        {{ error.message }}
+      </p>
+      <NuxtLink to="/">
+        Tillbaka till startsidan
+      </NuxtLink>
+    </v-container>
   </v-app>
 </template>
 
@@ -28,15 +30,20 @@ export default class ErrorLayout extends Vue {
   @Prop({ type: Object, default: null })
   error!: any
 
-  head() {
+  get title() {
     const titles = {
       pageNotFound: '404 Not Found',
       otherError: 'An error occurred'
     }
     const title =
       this.error.statusCode === 404 ? titles.pageNotFound : titles.otherError
+
+    return title
+  }
+
+  head() {
     return {
-      title
+      title: this.title
     }
   }
 }

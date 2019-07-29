@@ -59,7 +59,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/moment'
+    '@nuxtjs/moment',
+    '@nuxtjs/sitemap'
   ],
   /*
    ** Axios module configuration
@@ -103,6 +104,30 @@ module.exports = {
       }
     }
   },
+  sitemap: {
+    hostname: 'https://snackamat.se',
+    gzip: true,
+    exclude: ['/404'],
+    async routes() {
+      const [entries] = await Promise.all([
+        // get all articles
+        cdaClient.getEntries<Article>({
+          content_type: 'article'
+        })
+      ])
+      return [
+        // map entries to URLs
+        ...entries.items.map(entry => {
+          return {
+            url: `/artikel/${entry.fields.slug}`,
+            changefreq: 'weekly',
+            priority: 1,
+            lastmodISO: entry.sys.updatedAt
+          }
+        })
+      ]
+    }
+  },
   /*
    ** Get all articles from Contentful
    ** and generate the needed files upfront
@@ -111,18 +136,17 @@ module.exports = {
    ** - articles
    */
   generate: {
-    routes() {
-      return Promise.all([
+    async routes() {
+      const [entries] = await Promise.all([
         // get all articles
         cdaClient.getEntries<Article>({
           content_type: 'article'
         })
-      ]).then(([entries]) => {
-        return [
-          // map entries to URLs
-          ...entries.items.map(entry => `/artikel/${entry.fields.slug}`)
-        ]
-      })
+      ])
+      return [
+        // map entries to URLs
+        ...entries.items.map(entry => `/artikel/${entry.fields.slug}`)
+      ]
     }
   }
 }
