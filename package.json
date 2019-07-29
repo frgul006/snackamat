@@ -1,17 +1,18 @@
 {
   "name": "snackamat",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "My personal website",
   "author": "Fredrik Gullberg",
   "private": true,
   "scripts": {
     "test": "jest",
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "nuxt",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
     "serve": "http-server ./dist",
-    "analyze": "nuxt build --analyze"
+    "analyze": "nuxt build --analyze",
+    "nuxt": "nuxt"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^13.1.0",
@@ -24,10 +25,14 @@
     "fastify": "^1.13.3",
     "http-server": "^0.11.1",
     "nuxt": "^2.0.0",
+    "nuxt-property-decorator": "^2.3.0",
+    "ts-node": "^8.3.0",
     "vue-moment": "^4.0.0",
+    "vuex-class": "^0.3.2",
     "webpack": "^4.36.1"
   },
   "devDependencies": {
+    "@nuxt/typescript": "^2.8.1",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.1.0",

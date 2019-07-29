@@ -1,6 +1,6 @@
 <template>
   <article class="snackamat-article-preview">
-    <nuxt-link class="snackamat-article-preview__link" :to="{ name: 'slug', params: { slug: article.fields.slug }}">
+    <nuxt-link class="snackamat-article-preview__link" :to="{ name: 'artikel-slug', params: { slug: article.fields.slug }}">
       <v-card>
         <v-img height="200px" :src="article.fields.image.fields.file.url + '?fit=scale&w=350&h=300&q=75'" :srcset="`${article.fields.image.fields.file.url}?w=350&h=300&fit=fill&q=75 350w, ${article.fields.image.fields.file.url}?w=600&h=300&fit=fill&q=75 1000w, ${article.fields.image.fields.file.url}?w=600&h=300&fit=fill&q=75 2000w`" sizes="(min-width: 1024px) 400px, 100vw">
         </v-img>
@@ -8,7 +8,7 @@
           <div>
             <h4 class="snackamat-article-preview__title">{{ article.fields.title }}
             </h4>
-            <p class="snackamat-article-preview__date">{{article.fields.publishedAt | moment("dddd, MMMM Do YYYY") }}</p>
+            <p class="snackamat-article-preview__date">{{article.fields.publishedAt | moment("from", "now") }}</p>
             <p>{{ article.fields.summary }}</p>
           </div>
         </v-card-title>
@@ -17,9 +17,14 @@
   </article>
 </template>
 
-<script>
-export default {
-  props: ['article']
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Article } from '~/types'
+
+@Component
+export default class ArticlePreview extends Vue {
+  @Prop({ type: Object, default: null })
+  article!: Article
 }
 </script>
 

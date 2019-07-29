@@ -22,10 +22,10 @@ const articles = namespace('articles')
   }
 })
 export default class Index extends Vue {
-  @articles.Getter('articles') articles!: Article[]
+  @articles.Getter('recipies') articles!: Article[]
 
   head() {
-    let canonical = `https://snackamat.se`
+    let canonical = `https://snackamat.se${this.$route.path}`
 
     return {
       title: `start`,
