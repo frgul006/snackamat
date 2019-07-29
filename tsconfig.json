@@ -4,6 +4,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "allowJs": true,
@@ -16,6 +17,6 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@types/node", "@nuxt/vue-app"]
+    "types": ["@types/jest", "@types/node", "@nuxt/vue-app"]
   }
 }

@@ -3,10 +3,22 @@
     <v-layout>
       <div class="snackamat-article">
         <div class="snackamat-article__img">
-          <v-img :aspect-ratio="10/3" :src="article.fields.image.fields.file.url + '?fit=scale&w=350&h=120'" :srcset="`${article.fields.image.fields.file.url}?w=350&h=120&fit=fill&q=75 350w, ${article.fields.image.fields.file.url}?w=1000&h=300&fit=fill&q=75 1000w, ${article.fields.image.fields.file.url}?w=2000&h=600&fit=fill&q=75 2000w`" sizes="(min-width: 1024px) 400px, 100vw">
+          <v-img
+            :aspect-ratio="10 / 3"
+            :src="
+              article.fields.image.fields.file.url + '?fit=scale&w=350&h=120'
+            "
+            :srcset="
+              `${article.fields.image.fields.file.url}?w=350&h=120&fit=fill&q=75 350w, ${article.fields.image.fields.file.url}?w=1000&h=300&fit=fill&q=75 1000w, ${article.fields.image.fields.file.url}?w=2000&h=600&fit=fill&q=75 2000w`
+            "
+            sizes="(min-width: 1024px) 400px, 100vw"
+          >
             <template v-slot:placeholder>
               <v-layout fill-height align-center justify-center ma-0>
-                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
+                ></v-progress-circular>
               </v-layout>
             </template>
           </v-img>
@@ -64,12 +76,13 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { State, namespace } from 'vuex-class'
 import { Article } from '~/types'
 import { MetaService } from '~/services'
+import { Entry } from 'contentful'
 
 const article = namespace('article')
 
 @Component
 export default class Slug extends Vue {
-  @article.Getter('currentArticle') article!: Article
+  @article.Getter('currentArticle') article!: Entry<Article>
 
   head() {
     let canonical = `https://snackamat.se${this.$route.path}/`

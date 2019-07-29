@@ -1,6 +1,7 @@
+import { Entry } from 'contentful'
 import { ActionTree, GetterTree, MutationTree } from 'vuex'
 import { createClient } from '~/plugins/contentful'
-import { Article, ArticleType, ArticlesState, RootState } from '~/types'
+import { Article, ArticlesState, ArticleType, RootState } from '~/types'
 
 const client = createClient()
 
@@ -9,17 +10,17 @@ export const state = (): ArticlesState => ({
 })
 
 export const mutations: MutationTree<ArticlesState> = {
-  setArticles(state, payload) {
-    state.articles = payload
+  setArticles(s, payload) {
+    s.articles = payload
   }
 }
 
 export const getters: GetterTree<ArticlesState, RootState> = {
-  articles(state): Article[] {
-    return state.articles
+  articles(s): Array<Entry<Article>> {
+    return s.articles
   },
-  recipies(state): Article[] {
-    return state.articles.filter(a =>
+  recipies(s): Array<Entry<Article>> {
+    return s.articles.filter(a =>
       a.fields.types.some(t => t === ArticleType.RECIPE)
     )
   }
@@ -27,7 +28,7 @@ export const getters: GetterTree<ArticlesState, RootState> = {
 
 export const actions: ActionTree<ArticlesState, RootState> = {
   async getArticles({ commit }) {
-    const response = await client.getEntries({
+    const response = await client.getEntries<Article>({
       content_type: 'article',
       order: '-fields.publishedAt'
     })

@@ -1,11 +1,13 @@
+import { Entry } from 'contentful'
 import { Article } from '~/types'
 
 export interface ArticleState {
-  currentArticle?: Article
+  currentArticle?: Entry<Article>
 }
 
 export interface ArticlesState {
-  articles: Article[]
+  articles: Array<Entry<Article>>
 }
 
+// tslint:disable-next-line: no-empty-interface
 export interface RootState {}
