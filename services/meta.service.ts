@@ -16,7 +16,7 @@ export class MetaService {
       {
         hid: 'og:image',
         name: 'og:image',
-        content: `https://${article.fields.image.fields.file.url}?w=520&h=664&fit=fill&q=75`
+        content: `https:${article.fields.image.fields.file.url}?w=520&h=664&fit=fill&q=75`
       },
       {
         hid: 'og:image:width',
