@@ -1,6 +1,6 @@
-const colors = require('vuetify/es5/util/colors').default
-const config = require('./.contentful.json')
-const { createClient } = require('./plugins/contentful')
+import * as config from './.contentful.json'
+import { createClient } from './plugins/contentful'
+import { Article } from './types'
 const cdaClient = createClient(config)
 
 module.exports = {
@@ -97,9 +97,9 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
+    extend(cfg, ctx) {
       if (ctx.isDev) {
-        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+        cfg.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
       }
     }
   },
@@ -114,7 +114,7 @@ module.exports = {
     routes() {
       return Promise.all([
         // get all articles
-        cdaClient.getEntries({
+        cdaClient.getEntries<Article>({
           content_type: 'article'
         })
       ]).then(([entries]) => {

@@ -1,7 +1,7 @@
-import ArticlePreview from '@/components/ArticlePreview.vue'
 import { RouterLinkStub, shallowMount } from '@vue/test-utils'
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import ArticlePreview from '~/components/ArticlePreview.vue'
 
 describe('ArticlePreview', () => {
   Vue.use(Vuetify)

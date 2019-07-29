@@ -1,0 +1,18 @@
+{
+  "defaultSeverity": "warning",
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "jest.config.js",
+      "node_modules/**/*",
+      "coverage/**/*",
+      "static/**/*",
+      "dist/**/*"
+    ]
+  },
+  "rules": {
+    "object-literal-sort-keys": false,
+    "no-console": true,
+    "interface-name": [true, "never-prefix"]
+  }
+}

@@ -11,7 +11,9 @@
     "generate": "cross-env NODE_ENV=production nuxt generate",
     "serve": "http-server ./dist",
     "analyze": "nuxt build --analyze",
-    "nuxt": "nuxt"
+    "nuxt": "nuxt",
+    "lint": "tslint --project tsconfig.json",
+    "typescript:version": "tsc --v"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^13.1.0",
@@ -32,6 +34,7 @@
   },
   "devDependencies": {
     "@nuxt/typescript": "^2.8.1",
+    "@types/jest": "^24.0.15",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
@@ -44,6 +47,9 @@
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
     "vue-jest": "^3.0.3",
     "vuetify-loader": "^1.2.2"
   }

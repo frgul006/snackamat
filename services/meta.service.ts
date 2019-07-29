@@ -1,7 +1,8 @@
+import { Entry } from 'contentful'
 import { Article } from '~/types'
 
 export class MetaService {
-  static getMetaForArticle(article: Article): {}[] {
+  public static getMetaForArticle(article: Entry<Article>): Array<{}> {
     return [
       {
         hid: 'description',
