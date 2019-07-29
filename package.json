@@ -6,10 +6,9 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "dev": "nuxt",
+    "start": "nuxt",
     "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
-    "generate": "nuxt generate",
+    "generate": "cross-env NODE_ENV=production nuxt generate",
     "serve": "http-server ./dist",
     "analyze": "nuxt build --analyze",
     "nuxt": "nuxt"

@@ -86,3 +86,6 @@ sw.*
 
 # Mac OSX
 .DS_Store
+
+# Generated as part of the build process
+static/robots.txt

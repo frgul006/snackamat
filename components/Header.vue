@@ -1,5 +1,6 @@
 <template>
   <div class="snackamat-header">
+    <h1 class="sr-only">snackamat.se</h1>
     <nuxt-link class="snackamat-header__home" :to="{ path: '/' }">
       <img src="/logo.svg">
     </nuxt-link>

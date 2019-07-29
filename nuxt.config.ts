@@ -85,6 +85,15 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    templates: [
+      {
+        src: './templates/robots.txt',
+        dst: '../static/robots.txt',
+        options: {
+          env: process.env.NODE_ENV
+        }
+      }
+    ],
     /*
      ** You can extend webpack config here
      */
