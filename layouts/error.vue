@@ -12,33 +12,32 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  layout: 'empty',
-  props: {
-    error: {
-      type: Object,
-      default: null
-    }
-  },
-  head() {
-    const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError
-    return {
-      title
-    }
-  },
-  data() {
-    return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
-    }
-  }
-}
-</script>
-
 <style scoped>
 h1 {
   font-size: 20px;
 }
 </style>
+
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+
+@Component({
+  layout: 'empty'
+})
+export default class ErrorLayout extends Vue {
+  @Prop({ type: Object, default: null })
+  error!: any
+
+  head() {
+    const titles = {
+      pageNotFound: '404 Not Found',
+      otherError: 'An error occurred'
+    }
+    const title =
+      this.error.statusCode === 404 ? titles.pageNotFound : titles.otherError
+    return {
+      title
+    }
+  }
+}
+</script>

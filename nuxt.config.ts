@@ -22,6 +22,8 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'og:locale', name: 'og:locale', content: 'sv_SE' },
+      { hid: 'og:site_name', name: 'og:site_name', content: 'snackamat.se' },
       {
         hid: 'description',
         name: 'description',
@@ -48,7 +50,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/contentful', '~/plugins/vue-moment.js'],
+  plugins: ['~/plugins/contentful', '~/plugins/vue-moment'],
   /*
    ** Nuxt.js modules
    */
@@ -109,7 +111,7 @@ module.exports = {
       ]).then(([entries]) => {
         return [
           // map entries to URLs
-          ...entries.items.map(entry => `/${entry.fields.slug}`)
+          ...entries.items.map(entry => `/artikel/${entry.fields.slug}`)
         ]
       })
     }

@@ -62,35 +62,32 @@
 }
 </style>
 
-<script>
+<script lang="ts">
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import { Component, Vue } from 'nuxt-property-decorator'
+import { State, namespace } from 'vuex-class'
+import { Article } from '~/types'
+import { MetaService } from '~/services'
 
-export default {
+const article = namespace('article')
+
+@Component
+export default class Slug extends Vue {
+  @article.Getter('currentArticle') article!: Article
+
   head() {
     return {
-      title: this.$store.state.article.currentArticle.fields.title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.$store.state.article.currentArticle.fields.summary
-        }
-      ]
+      title: this.article.fields.title,
+      meta: MetaService.getMetaForArticle(this.article)
     }
-  },
-  components: {},
-  computed: {
-    article() {
-      return this.$store.state.article.currentArticle
-    },
-    richTextHtml() {
-      return documentToHtmlString(
-        this.$store.state.article.currentArticle.fields.content
-      )
-    }
-  },
+  }
+
   async fetch({ store, params }) {
     await store.dispatch('article/getArticleBySlug', params.slug)
+  }
+
+  get richTextHtml(): string {
+    return documentToHtmlString(this.article.fields.content)
   }
 }
 </script>

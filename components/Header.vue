@@ -5,7 +5,7 @@
     </nuxt-link>
     <v-spacer></v-spacer>
     <div class="hidden-xs-only">
-      <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recipies' }" nuxt> Recept </v-btn>
+      <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recept' }" nuxt> Recept </v-btn>
       <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
       <v-btn class="snackamat-header__link" :to="{ path: '/about' }" nuxt> Om oss </v-btn>
     </div>
@@ -18,7 +18,7 @@
 
       <ul class="snackamat-header__menu">
         <li class="snackamat-header__menu-item">
-          <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recipies' }" nuxt> Recept </v-btn>
+          <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recept' }" nuxt> Recept </v-btn>
         </li>
         <li class="snackamat-header__menu-item">
           <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
@@ -62,3 +62,10 @@
   }
 }
 </style>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+
+@Component
+export default class Header extends Vue {}
+</script>

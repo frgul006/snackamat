@@ -20,12 +20,14 @@
 }
 </style>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
 import Header from '~/components/Header.vue'
 
-export default {
+@Component({
   components: {
     Header
   }
-}
+})
+export default class DefaultLayout extends Vue {}
 </script>
