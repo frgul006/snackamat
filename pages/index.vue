@@ -25,6 +25,8 @@ export default class Index extends Vue {
   @articles.Getter('articles') articles!: Article[]
 
   head() {
+    let canonical = `https://snackamat.se`
+
     return {
       title: `start`,
       meta: [
@@ -33,7 +35,8 @@ export default class Index extends Vue {
           name: 'description',
           content: 'snackamat.se is a site dedicated to food.'
         }
-      ]
+      ],
+      link: [{ rel: 'canonical', href: canonical }]
     }
   }
 
