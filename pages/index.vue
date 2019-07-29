@@ -1,6 +1,7 @@
 <template>
   <v-container grid-list-lg>
     <v-layout wrap>
+      <h2 class="sr-only">Artiklar</h2>
       <v-flex sm4 v-for="article in articles" :key="article.sys.id">
         <ArticlePreview :article="article"></ArticlePreview>
       </v-flex>

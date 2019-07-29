@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout>
-      <div v-if="article" class="snackamat-article">
+      <div class="snackamat-article">
         <div class="snackamat-article__img">
           <v-img :aspect-ratio="10/3" :src="article.fields.image.fields.file.url + '?fit=scale&w=350&h=120'" :srcset="`${article.fields.image.fields.file.url}?w=350&h=120&fit=fill&q=75 350w, ${article.fields.image.fields.file.url}?w=1000&h=300&fit=fill&q=75 1000w, ${article.fields.image.fields.file.url}?w=2000&h=600&fit=fill&q=75 2000w`" sizes="(min-width: 1024px) 400px, 100vw">
             <template v-slot:placeholder>
@@ -12,15 +12,11 @@
           </v-img>
         </div>
         <div class="snackamat-article__header">
-          <h1>
+          <h2>
             {{ article.fields.title }}
-          </h1>
+          </h2>
         </div>
         <main class="snackamat-article__content" v-html="richTextHtml"></main>
-      </div>
-      <div v-else>
-        <h1>404</h1>
-        <p>This page could not be found.</p>
       </div>
     </v-layout>
   </v-container>
@@ -76,7 +72,7 @@ export default class Slug extends Vue {
   @article.Getter('currentArticle') article!: Article
 
   head() {
-    let canonical = `https://snackamat.se${this.$route.path}`
+    let canonical = `https://snackamat.se${this.$route.path}/`
 
     return {
       title: this.article.fields.title,

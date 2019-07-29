@@ -1,13 +1,14 @@
 <template>
   <div class="snackamat-header">
+    <h1 class="sr-only">snackamat.se</h1>
     <nuxt-link class="snackamat-header__home" :to="{ path: '/' }">
       <img src="/logo.svg">
     </nuxt-link>
     <v-spacer></v-spacer>
     <div class="hidden-xs-only">
       <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recept' }" nuxt> Recept </v-btn>
-      <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
-      <v-btn class="snackamat-header__link" :to="{ path: '/about' }" nuxt> Om oss </v-btn>
+      <!-- <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
+      <v-btn class="snackamat-header__link" :to="{ path: '/about' }" nuxt> Om oss </v-btn> -->
     </div>
     <v-menu :offset-y="true">
       <template v-slot:activator="{ on }">
@@ -20,12 +21,12 @@
         <li class="snackamat-header__menu-item">
           <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recept' }" nuxt> Recept </v-btn>
         </li>
-        <li class="snackamat-header__menu-item">
+        <!-- <li class="snackamat-header__menu-item">
           <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
         </li>
         <li class="snackamat-header__menu-item">
           <v-btn class="snackamat-header__link" :to="{ path: '/about' }" nuxt> Om oss </v-btn>
-        </li>
+        </li> -->
       </ul>
 
     </v-menu>
