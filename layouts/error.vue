@@ -1,15 +1,9 @@
 <template>
   <v-app>
     <v-container>
-      <h1>
-        {{ title }}
-      </h1>
-      <p>
-        {{ error.message }}
-      </p>
-      <NuxtLink to="/">
-        Tillbaka till startsidan
-      </NuxtLink>
+      <h1>{{ title }}</h1>
+      <p>{{ error.message }}</p>
+      <NuxtLink to="/">Tillbaka till startsidan</NuxtLink>
     </v-container>
   </v-app>
 </template>

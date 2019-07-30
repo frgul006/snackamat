@@ -1,6 +1,7 @@
-import * as config from './.contentful.json'
-import { createClient } from './plugins/contentful'
-import { Article } from './types'
+import * as config from './.contentful.json';
+import { createClient } from './plugins/contentful';
+import { Article } from './types';
+
 const cdaClient = createClient(config)
 
 module.exports = {
@@ -55,7 +56,7 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
-    ['@nuxtjs/vuetify', { treeShake: true }],
+    ['@nuxtjs/vuetify'],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
@@ -80,7 +81,8 @@ module.exports = {
       warning: '#ffc107',
       info: '#607d8b',
       success: '#4caf50'
-    }
+    },
+    treeShake: true
   },
   /*
    ** Build configuration
