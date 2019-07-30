@@ -19,7 +19,7 @@
             (min-width: 1904px) 568px,
             (min-width: 1264px) 368px, 
             (min-width: 600px) 270px, 
-            568px"
+            100vw"
         ></v-img>
         <v-card-title>
           <div>
@@ -27,9 +27,13 @@
             <p
               class="snackamat-article-preview__date"
             >{{article.fields.publishedAt | moment("from", "now") }}</p>
-            <p>{{ article.fields.summary }}</p>
           </div>
         </v-card-title>
+        <v-card-text>
+          <div>
+            <p class="text--primary">{{ article.fields.summary }}</p>
+          </div>
+        </v-card-text>
       </v-card>
     </nuxt-link>
   </article>
@@ -51,6 +55,9 @@ export default class ArticlePreview extends Vue {
   height: 100%;
 
   &__link {
+    display: block;
+    height: 100%;
+
     &:hover,
     &:focus {
       .v-card {
@@ -100,10 +107,8 @@ export default class ArticlePreview extends Vue {
   &__date {
     color: #666;
     font-size: 14px;
-  }
-
-  &__tags {
-    // padding: 0.5em 0;
+    line-height: 1rem;
+    margin-bottom: 0;
   }
 }
 </style>

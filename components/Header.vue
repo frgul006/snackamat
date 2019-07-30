@@ -12,7 +12,7 @@
     </div>
     <v-menu :offset-y="true">
       <template v-slot:activator="{ on }">
-        <v-btn v-on="on" outlined dark class="snackamat-header__menu-btn hidden-sm-and-up">
+        <v-btn v-on="on" outlined class="snackamat-header__menu-btn hidden-sm-and-up">
           <v-icon>menu</v-icon>
         </v-btn>
       </template>
@@ -48,6 +48,7 @@
     align-items: center;
     max-width: 350px;
     flex-grow: 1;
+    padding-right: 1rem;
 
     img {
       width: 100%;

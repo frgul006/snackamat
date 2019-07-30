@@ -74,14 +74,19 @@ module.exports = {
    */
   vuetify: {
     theme: {
-      primary: '#ff9800',
-      secondary: '#ff5722',
-      accent: '#795548',
-      error: '#f44336',
-      warning: '#ffc107',
-      info: '#607d8b',
-      success: '#4caf50'
+      themes: {
+        light: {
+          primary: '#ff9800',
+          secondary: '#ff5722',
+          accent: '#795548',
+          error: '#f44336',
+          warning: '#ffc107',
+          info: '#607d8b',
+          success: '#4caf50'
+        }
+      }
     },
+    customVariables: ['~/assets/style/_vuetify.scss'],
     treeShake: true
   },
   /*

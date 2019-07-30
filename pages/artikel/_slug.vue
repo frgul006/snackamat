@@ -34,7 +34,7 @@
             <h3 class="sr-only">Kök</h3>
             <ul>
               <li v-for="cuisine in article.fields.cuisines" :key="cuisine">
-                <v-chip large color="primary">{{cuisine}}</v-chip>
+                <v-chip color="primary">{{cuisine}}</v-chip>
               </li>
             </ul>
           </div>
@@ -42,7 +42,7 @@
             <h3 class="sr-only">Matlagningsmetoder</h3>
             <ul>
               <li v-for="method in article.fields.methods" :key="method">
-                <v-chip large color="secondary">{{method}}</v-chip>
+                <v-chip color="secondary">{{method}}</v-chip>
               </li>
             </ul>
           </div>
@@ -50,7 +50,7 @@
             <h3 class="sr-only">Dieter</h3>
             <ul>
               <li v-for="diet in article.fields.diets" :key="diet">
-                <v-chip large color="success">{{diet}}</v-chip>
+                <v-chip color="success">{{diet}}</v-chip>
               </li>
             </ul>
           </div>
@@ -79,12 +79,13 @@
 
 .snackamat-article {
   flex-grow: 1;
+  max-width: 100%;
 
   &__img {
     margin-bottom: 1rem;
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-top: -16px;
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-top: -28px;
 
     @include lg {
       margin-left: 0;
@@ -129,14 +130,11 @@
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0.5rem;
-    }
 
-    .v-chip__content {
-      font-weight: 500;
-    }
-
-    .v-chip.secondary {
-      color: #fff;
+      li {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
     }
   }
 }
