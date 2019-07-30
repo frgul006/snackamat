@@ -17,6 +17,6 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@types/jest", "@types/node", "@nuxt/vue-app"]
+    "types": ["@types/jest", "@types/node", "@nuxt/vue-app", "@nuxtjs/vuetify"]
   }
 }
