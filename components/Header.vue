@@ -5,10 +5,11 @@
       <img src="~/assets/logo.svg" />
     </nuxt-link>
     <v-spacer></v-spacer>
-    <div class="hidden-xs-only">
+
+    <Search></Search>
+
+    <!-- <div class="hidden-xs-only">
       <v-btn class="snackamat-header__link" color="primary" :to="{ path: '/recept' }" nuxt>Recept</v-btn>
-      <!-- <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
-      <v-btn class="snackamat-header__link" :to="{ path: '/about' }" nuxt> Om oss </v-btn>-->
     </div>
     <v-menu :offset-y="true">
       <template v-slot:activator="{ on }">
@@ -26,14 +27,8 @@
             nuxt
           >Recept</v-btn>
         </li>
-        <!-- <li class="snackamat-header__menu-item">
-          <v-btn class="snackamat-header__link" color="secondary" :to="{ path: '/how-tos' }" nuxt> Guider </v-btn>
-        </li>
-        <li class="snackamat-header__menu-item">
-          <v-btn class="snackamat-header__link" :to="{ path: '/about' }" nuxt> Om oss </v-btn>
-        </li>-->
       </ul>
-    </v-menu>
+    </v-menu>-->
   </div>
 </template>
 
@@ -70,7 +65,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import Search from '~/components/Search.vue'
 
-@Component
+@Component({
+  components: {
+    Search
+  }
+})
 export default class Header extends Vue {}
 </script>
