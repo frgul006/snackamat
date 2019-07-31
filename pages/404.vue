@@ -4,8 +4,12 @@
       <div class="snackamat-404">
         <v-icon class="snackamat-404__icon">error</v-icon>
         <h2 class="snackamat-404__title">Hoppsan!</h2>
-        <p class="snackamat-404__message">Vi kunde inte hitta sidan du försökte surfa till.</p>
-        <NuxtLink to="/" class="snackamat-404__link">Tillbaka till startsidan</NuxtLink>
+        <p class="snackamat-404__message">
+          Vi kunde inte hitta sidan du försökte surfa till.
+        </p>
+        <NuxtLink to="/" class="snackamat-404__link"
+          >Tillbaka till startsidan</NuxtLink
+        >
       </div>
     </v-container>
   </v-app>
@@ -13,11 +17,12 @@
 
 <style lang="scss" scoped>
 @import '~/assets/style/_mixins.scss';
+@import '~/assets/style/_colors.scss';
 
 .snackamat-404 {
   text-align: center;
   &__icon {
-    color: #f44336;
+    color: $error-color;
     margin-top: 2rem;
     font-size: 20vh;
 

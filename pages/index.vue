@@ -11,9 +11,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import { State, namespace } from 'vuex-class'
-import { Article } from '~/types'
+import { namespace, State } from 'vuex-class'
+
 import ArticlePreview from '~/components/ArticlePreview.vue'
+import { Article } from '~/types'
 
 const articles = namespace('articles')
 
@@ -23,10 +24,10 @@ const articles = namespace('articles')
   }
 })
 export default class Index extends Vue {
-  @articles.Getter('articles') articles!: Article[]
+  @articles.Getter('articles') public articles!: Article[]
 
-  head() {
-    let canonical = `https://snackamat.se`
+  public head() {
+    const canonical = `https://snackamat.se`
 
     return {
       title: `start`,
@@ -41,7 +42,7 @@ export default class Index extends Vue {
     }
   }
 
-  async fetch({ store, params }) {
+  public async fetch({ store, params }) {
     await store.dispatch('articles/getArticles')
   }
 }

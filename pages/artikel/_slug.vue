@@ -5,17 +5,24 @@
         <div class="snackamat-article__img">
           <v-img
             :alt="article.fields.image.fields.description"
-            :src="article.fields.image.fields.file.url + '?w=414&h=138&fit=fill&q=25'"
+            :src="
+              article.fields.image.fields.file.url +
+                '?w=414&h=138&fit=fill&q=25'
+            "
             :srcset="
-              `${article.fields.image.fields.file.url}?w=900&h=300&fit=fill&q=75 900w, 
-               ${article.fields.image.fields.file.url}?w=1137&h=384&fit=fill&q=75 1137w, 
-               ${article.fields.image.fields.file.url}?w=1737&h=564&fit=fill&q=75 1737w`"
-            :lazy-src="article.fields.image.fields.file.url + '?fm=jpg&fl=progressive&w=414&h=138&fit=fill&q=25'"
-            :aspect-ratio="10/3"
+              `${article.fields.image.fields.file.url}?w=900&h=300&fit=fill&q=75 900w,
+               ${article.fields.image.fields.file.url}?w=1137&h=384&fit=fill&q=75 1137w,
+               ${article.fields.image.fields.file.url}?w=1737&h=564&fit=fill&q=75 1737w`
+            "
+            :lazy-src="
+              article.fields.image.fields.file.url +
+                '?fm=jpg&fl=progressive&w=414&h=138&fit=fill&q=25'
+            "
+            :aspect-ratio="10 / 3"
             sizes="
                 (min-width: 1904px) 1737px,
-                (min-width: 1264px) 1137px, 
-                (min-width: 960px) 900px, 
+                (min-width: 1264px) 1137px,
+                (min-width: 960px) 900px,
                 100vw"
           >
             <template v-slot:placeholder>
@@ -30,32 +37,65 @@
         </div>
         <main class="snackamat-article__content" v-html="richTextHtml"></main>
         <div class="snackamat-article__metadata">
-          <div class="snackamat-article__cuisines" v-if="article.fields.cuisines.length > 0">
+          <div
+            class="snackamat-article__cuisines"
+            v-if="article.fields.cuisines.length > 0"
+          >
             <h3 class="sr-only">Kök</h3>
             <ul>
               <li v-for="cuisine in article.fields.cuisines" :key="cuisine">
-                <v-chip large color="primary">{{cuisine}}</v-chip>
+                <nuxt-link
+                  :to="{ name: 'artiklar', query: { q: cuisine } }"
+                  no-prefetch
+                >
+                  <v-chip nuxt link color="primary"
+                    >{{ cuisine }}
+                  </v-chip></nuxt-link
+                >
               </li>
             </ul>
           </div>
-          <div class="snackamat-article__methods" v-if="article.fields.methods.length > 0">
+          <div
+            class="snackamat-article__methods"
+            v-if="article.fields.methods.length > 0"
+          >
             <h3 class="sr-only">Matlagningsmetoder</h3>
             <ul>
               <li v-for="method in article.fields.methods" :key="method">
-                <v-chip large color="secondary">{{method}}</v-chip>
+                <nuxt-link
+                  :to="{ name: 'artiklar', query: { q: method } }"
+                  no-prefetch
+                >
+                  <v-chip nuxt link color="secondary">{{
+                    method
+                  }}</v-chip></nuxt-link
+                >
               </li>
             </ul>
           </div>
-          <div class="snackamat-article__diets" v-if="article.fields.diets.length > 0">
+          <div
+            class="snackamat-article__diets"
+            v-if="article.fields.diets.length > 0"
+          >
             <h3 class="sr-only">Dieter</h3>
             <ul>
               <li v-for="diet in article.fields.diets" :key="diet">
-                <v-chip large color="success">{{diet}}</v-chip>
+                <nuxt-link
+                  :to="{ name: 'artiklar', query: { q: diet } }"
+                  no-prefetch
+                >
+                  <v-chip nuxt link color="success">{{
+                    diet
+                  }}</v-chip></nuxt-link
+                >
               </li>
             </ul>
           </div>
         </div>
-        <div class="snackamat-article__related-articles" v-if="article.fields.relatedArticles">
+        <div
+          class="snackamat-article__related-articles"
+          v-if="article.fields.relatedArticles"
+        >
           <h3 class="sr-only">Relaterade artiklar</h3>
           <v-container grid-list-lg>
             <v-layout wrap>
@@ -79,12 +119,13 @@
 
 .snackamat-article {
   flex-grow: 1;
+  max-width: 100%;
 
   &__img {
     margin-bottom: 1rem;
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-top: -16px;
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-top: -28px;
 
     @include lg {
       margin-left: 0;
@@ -129,14 +170,33 @@
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0.5rem;
-    }
 
-    .v-chip__content {
-      font-weight: 500;
-    }
+      li {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
 
-    .v-chip.secondary {
-      color: #fff;
+        a {
+          text-decoration: none;
+          color: #fff;
+
+          .v-chip {
+            transition-property: box-shadow, opacity, transform;
+          }
+
+          &:hover,
+          &:focus {
+            text-decoration: underline;
+            outline: 0;
+
+            .v-chip {
+              box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+                0px 1px 5px 0px rgba(0, 0, 0, 0.12) !important;
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -144,13 +204,14 @@
 
 <script lang="ts">
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import { Component, Vue } from 'nuxt-property-decorator'
-import { State, namespace } from 'vuex-class'
-import { Article } from '~/types'
-import { MetaService } from '~/services'
 import { Entry } from 'contentful'
-import Spinner from '~/components/Spinner.vue'
+import { Component, Vue } from 'nuxt-property-decorator'
+import { namespace, State } from 'vuex-class'
+
 import ArticlePreview from '~/components/ArticlePreview.vue'
+import Spinner from '~/components/Spinner.vue'
+import { MetaService } from '~/services'
+import { Article } from '~/types'
 
 const article = namespace('article')
 
@@ -161,10 +222,10 @@ const article = namespace('article')
   }
 })
 export default class Slug extends Vue {
-  @article.Getter('currentArticle') article!: Entry<Article>
+  @article.Getter('currentArticle') public article!: Entry<Article>
 
-  head() {
-    let canonical = `https://snackamat.se${this.$route.path}/`
+  public head() {
+    const canonical = `https://snackamat.se${this.$route.path}/`
 
     return {
       title: this.article.fields.title,
@@ -173,11 +234,11 @@ export default class Slug extends Vue {
     }
   }
 
-  async fetch({ store, params }) {
+  public async fetch({ store, params }) {
     await store.dispatch('article/getArticleBySlug', params.slug)
   }
 
-  get richTextHtml(): string {
+  public get richTextHtml(): string {
     return documentToHtmlString(this.article.fields.content)
   }
 }

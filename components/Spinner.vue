@@ -1,11 +1,12 @@
 <template>
-  <div class="snackamat-spinner"></div>
+  <div
+    class="snackamat-spinner"
+    v-bind:style="{ width: size, height: size }"
+  ></div>
 </template>
 
 <style scoped lang="scss">
 .snackamat-spinner {
-  width: 50px;
-  height: 50px;
   background-image: url('~assets/icon.svg');
   background-size: cover;
   animation: spin 2s ease-out infinite;
@@ -22,10 +23,13 @@
 </style>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class Spinner extends Vue {}
+export default class Spinner extends Vue {
+  @Prop({ type: String, default: '50px' })
+  public size!: string
+}
 </script>
 
 
