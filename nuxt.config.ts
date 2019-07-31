@@ -118,7 +118,7 @@ module.exports = {
   sitemap: {
     hostname: 'https://snackamat.se',
     gzip: true,
-    exclude: ['/404'],
+    exclude: ['/404', '/artiklar'],
     async routes() {
       const [entries] = await Promise.all([
         // get all articles

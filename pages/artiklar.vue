@@ -120,7 +120,7 @@ export default class Index extends Vue {
   }
 
   public search(e) {
-    this.$router.push({ path: 'artiklar', query: { q: e.target.value } })
+    this.$router.push({ name: 'artiklar', query: { q: e.target.value } })
     this.$store.dispatch('search/search', e.target.value)
   }
 
