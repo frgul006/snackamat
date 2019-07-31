@@ -1,14 +1,15 @@
-import { Entry } from 'contentful';
-import { ActionTree, GetterTree, MutationTree } from 'vuex';
-import { createClient } from '~/plugins/contentful';
-import { Article, RootState, SearchState } from '~/types';
+import { Entry } from 'contentful'
+import { ActionTree, GetterTree, MutationTree } from 'vuex'
+import { createClient } from '~/plugins/contentful'
+import { Article, RootState, SearchState } from '~/types'
 
 const client = createClient()
 
 export const state = (): SearchState => ({
   results: [],
   filter: '',
-  isSearching: false
+  isSearching: false,
+  hasSearched: false
 })
 
 export const mutations: MutationTree<SearchState> = {
@@ -20,6 +21,9 @@ export const mutations: MutationTree<SearchState> = {
   },
   setIsSearching(s, payload: boolean) {
     s.isSearching = payload
+  },
+  setHasSearched(s, payload: boolean) {
+    s.hasSearched = payload
   }
 }
 
@@ -32,6 +36,9 @@ export const getters: GetterTree<SearchState, RootState> = {
   },
   isSearching(s): boolean {
     return s.isSearching
+  },
+  hasSearched(s): boolean {
+    return s.hasSearched
   }
 }
 
@@ -47,5 +54,6 @@ export const actions: ActionTree<SearchState, RootState> = {
     })
     commit('setResults', response.items)
     commit('setIsSearching', false)
+    commit('setHasSearched', true)
   }
 }

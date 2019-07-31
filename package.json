@@ -31,6 +31,7 @@
     "nuxt-property-decorator": "^2.3.0",
     "ts-node": "^8.3.0",
     "vue-moment": "^4.0.0",
+    "vue-truncate-filter": "^1.1.7",
     "vuex-class": "^0.3.2",
     "webpack": "^4.36.1"
   },

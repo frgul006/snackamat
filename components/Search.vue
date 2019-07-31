@@ -1,5 +1,8 @@
 <template>
-  <div class="snackamat-search" v-bind:class="{ 'snackamat-search--expanded': showSearchBar }">
+  <div
+    class="snackamat-search"
+    v-bind:class="{ 'snackamat-search--expanded': showSearchBar }"
+  >
     <div v-if="showSearchBar" class="snackamat-search__bar">
       <v-text-field
         class="snackamat-search__bar-input"
@@ -70,27 +73,21 @@ import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Search extends Vue {
-  showSearchBar: boolean = false
-  searchTxt: string = ''
+  public showSearchBar: boolean = false
+  public searchTxt: string = ''
 
-  close() {
+  public close() {
     this.searchTxt = ''
     this.showSearchBar = false
   }
 
-  open() {
+  public open() {
     this.searchTxt = ''
     this.showSearchBar = true
   }
 
-  search() {
-    console.log(this.$route)
-    this.$router.push({ path: 'artiklar', query: { q: this.searchTxt } })
-
-    // If already on route, reload page
-    if (this.$route.name === 'artiklar') {
-      //   this.$router.go(0)
-    }
+  public search() {
+    this.$router.push({ name: 'artiklar', query: { q: this.searchTxt } })
 
     this.close()
   }

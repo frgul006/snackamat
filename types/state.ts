@@ -1,5 +1,5 @@
-import { Entry } from 'contentful';
-import { Article } from '~/types';
+import { Entry } from 'contentful'
+import { Article } from '~/types'
 
 export interface ArticleState {
   currentArticle?: Entry<Article>
@@ -13,6 +13,7 @@ export interface SearchState {
   results: Array<Entry<Article>>
   filter: string
   isSearching: boolean
+  hasSearched: boolean
 }
 
 // tslint:disable-next-line: no-empty-interface

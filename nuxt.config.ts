@@ -1,6 +1,6 @@
-import * as config from './.contentful.json';
-import { createClient } from './plugins/contentful';
-import { Article } from './types';
+import * as config from './.contentful.json'
+import { createClient } from './plugins/contentful'
+import { Article } from './types'
 
 const cdaClient = createClient(config)
 
@@ -51,7 +51,11 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/contentful', '~/plugins/vue-moment'],
+  plugins: [
+    '~/plugins/contentful',
+    '~/plugins/vue-moment',
+    '~/plugins/vue-truncate'
+  ],
   /*
    ** Nuxt.js modules
    */
