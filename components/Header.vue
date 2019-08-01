@@ -2,7 +2,8 @@
   <div class="snackamat-header">
     <h1 class="sr-only">snackamat.se</h1>
     <nuxt-link class="snackamat-header__home" :to="{ path: '/' }">
-      <img src="~/assets/logo.svg" />
+      <img alt="logotyp för snackamat.se" src="~/assets/logo.svg" />
+      <span class="sr-only">Länk till startsidan</span>
     </nuxt-link>
     <v-spacer></v-spacer>
 

@@ -18,12 +18,12 @@
         v-on:click:clear="close"
       ></v-text-field>
       <v-btn
-        color="primary"
+        color="accent"
         @click="showSearchBar ? search() : open()"
         :disabled="showSearchBar ? searchTxt === '' : false"
         class="snackamat-search__bar-btn"
         v-bind:class="{ 'snackamat-search__bar-btn--expanded': showSearchBar }"
-      >
+        ><span class="sr-only">Sök</span>
         <v-icon>search</v-icon>
       </v-btn>
     </div>

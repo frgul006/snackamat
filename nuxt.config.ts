@@ -83,7 +83,7 @@ module.exports = {
         light: {
           primary: '#ff9800',
           secondary: '#ff5722',
-          accent: '#795548',
+          accent: '#99451F',
           error: '#f44336',
           warning: '#ffc107',
           info: '#607d8b',
