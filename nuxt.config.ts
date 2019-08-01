@@ -54,7 +54,8 @@ module.exports = {
   plugins: [
     '~/plugins/contentful',
     '~/plugins/vue-moment',
-    '~/plugins/vue-truncate'
+    '~/plugins/vue-truncate',
+    '~/plugins/v-click-outside'
   ],
   /*
    ** Nuxt.js modules

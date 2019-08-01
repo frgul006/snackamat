@@ -3,20 +3,17 @@
     <v-layout>
       <div class="snackamat-search">
         <h2 class="sr-only">Sök bland artiklar</h2>
-        <v-text-field
-          v-model="searchTxt"
-          @keydown="debouncedSearch"
-          outlined
-          rounded
-          solo
-          clearable
-          append-icon="search"
-        ></v-text-field>
+
         <div
           v-if="isSearching || !hasSearched"
           class="snackamat-search__searching"
         >
-          <Spinner :size="'100px'"></Spinner>
+          <div class="snackamat-searching">
+            <div class="snackamat-search__spinner">
+              <Spinner :size="'100px'"></Spinner>
+            </div>
+            <div class="snackamat-searching__text">Söker...</div>
+          </div>
         </div>
         <div
           v-if="!isSearching && hasSearched && results.length === 0"
@@ -34,6 +31,10 @@
           grid-list-lg
           v-if="!isSearching && results.length > 0"
         >
+          <p class="snackamat-search__counter">
+            {{ results.length }}
+            {{ results.length === 1 ? 'träff' : 'träffar' }}
+          </p>
           <v-layout wrap>
             <v-flex v-for="article in results" :key="article.sys.id">
               <SearchResult :article="article"></SearchResult>
@@ -46,8 +47,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~/assets/style/_mixins.scss';
-
 .snackamat-search {
   width: 100%;
   max-width: 900px;
@@ -63,13 +62,36 @@
   &__results-container {
     padding: 0;
   }
+
+  &__counter {
+    color: #666;
+    text-align: center;
+  }
+}
+
+.snackamat-searching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__text {
+    font-size: 4vw;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
 }
 
 .snackamat-no-results {
+  margin-top: -36px;
+
   &__icon {
     > i {
-      font-size: 20vw;
+      font-size: 24vw;
     }
+  }
+  &__text {
+    text-align: center;
+    font-size: 4vw;
   }
 }
 </style>

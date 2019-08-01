@@ -32,10 +32,12 @@
             </template>
           </v-img>
         </div>
-        <div class="snackamat-article__header">
-          <h2>{{ article.fields.title }}</h2>
+        <div class="snackamat-article__content">
+          <div class="snackamat-article__header">
+            <h2>{{ article.fields.title }}</h2>
+          </div>
+          <main class="snackamat-article__html" v-html="richTextHtml"></main>
         </div>
-        <main class="snackamat-article__content" v-html="richTextHtml"></main>
         <div class="snackamat-article__metadata">
           <div
             class="snackamat-article__cuisines"
@@ -100,11 +102,20 @@
           <v-container grid-list-lg>
             <v-layout wrap>
               <v-flex
-                sm4
                 v-for="relatedArticle in article.fields.relatedArticles"
                 :key="relatedArticle.sys.id"
               >
-                <ArticlePreview :article="relatedArticle"></ArticlePreview>
+                <SearchResult
+                  v-if="$vuetify.breakpoint.sm"
+                  :article="relatedArticle"
+                ></SearchResult>
+
+                <ArticlePreview
+                  v-if="
+                    $vuetify.breakpoint.xsOnly || $vuetify.breakpoint.mdAndUp
+                  "
+                  :article="relatedArticle"
+                ></ArticlePreview>
               </v-flex>
             </v-layout>
           </v-container>
@@ -120,8 +131,21 @@
 .snackamat-article {
   flex-grow: 1;
   max-width: 100%;
+  @include sm {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 2fr 2fr;
+    grid-template-rows: auto;
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+    grid-template-areas:
+      'img      img       img img       img'
+      'content  content   .   metadata  metadata'
+      'content  content   .   related   related'
+      'content  content   .   related   related';
+  }
 
   &__img {
+    grid-area: img;
     margin-bottom: 1rem;
     margin-left: -12px;
     margin-right: -12px;
@@ -135,6 +159,10 @@
   }
 
   &__content {
+    grid-area: content;
+  }
+
+  &__html {
     h1,
     h2,
     h3 {
@@ -155,13 +183,21 @@
   }
 
   &__related-articles {
+    grid-area: related;
+
     .container {
       padding: 0;
     }
   }
 
   &__metadata {
+    grid-area: metadata;
     margin-bottom: 2rem;
+
+    @include sm {
+      margin-bottom: 0;
+      align-self: end;
+    }
 
     ul {
       list-style-type: none;
@@ -209,6 +245,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { namespace, State } from 'vuex-class'
 
 import ArticlePreview from '~/components/ArticlePreview.vue'
+import SearchResult from '~/components/SearchResult.vue'
 import Spinner from '~/components/Spinner.vue'
 import { MetaService } from '~/services'
 import { Article } from '~/types'
@@ -218,6 +255,7 @@ const article = namespace('article')
 @Component({
   components: {
     ArticlePreview,
+    SearchResult,
     Spinner
   }
 })
