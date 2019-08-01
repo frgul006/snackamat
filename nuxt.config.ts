@@ -1,6 +1,7 @@
 import * as config from './.contentful.json'
 import { createClient } from './plugins/contentful'
 import { Article } from './types'
+
 const cdaClient = createClient(config)
 
 module.exports = {
@@ -50,12 +51,17 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/contentful', '~/plugins/vue-moment'],
+  plugins: [
+    '~/plugins/contentful',
+    '~/plugins/vue-moment',
+    '~/plugins/vue-truncate',
+    '~/plugins/v-click-outside'
+  ],
   /*
    ** Nuxt.js modules
    */
   modules: [
-    ['@nuxtjs/vuetify', { treeShake: true }],
+    ['@nuxtjs/vuetify'],
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
@@ -73,14 +79,20 @@ module.exports = {
    */
   vuetify: {
     theme: {
-      primary: '#ff9800',
-      secondary: '#ff5722',
-      accent: '#795548',
-      error: '#f44336',
-      warning: '#ffc107',
-      info: '#607d8b',
-      success: '#4caf50'
-    }
+      themes: {
+        light: {
+          primary: '#ff9800',
+          secondary: '#ff5722',
+          accent: '#795548',
+          error: '#f44336',
+          warning: '#ffc107',
+          info: '#607d8b',
+          success: '#4caf50'
+        }
+      }
+    },
+    customVariables: ['~/assets/style/_vuetify.scss'],
+    treeShake: true
   },
   /*
    ** Build configuration
@@ -107,7 +119,7 @@ module.exports = {
   sitemap: {
     hostname: 'https://snackamat.se',
     gzip: true,
-    exclude: ['/404'],
+    exclude: ['/404', '/artiklar'],
     async routes() {
       const [entries] = await Promise.all([
         // get all articles

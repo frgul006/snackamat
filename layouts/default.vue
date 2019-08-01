@@ -1,12 +1,14 @@
 <template>
   <v-app>
-    <v-toolbar app prominent height="83px">
+    <v-app-bar app height="83px">
       <div class="snackamat-toolbar">
         <Header></Header>
       </div>
-    </v-toolbar>
+    </v-app-bar>
     <v-content>
-      <nuxt/>
+      <div class="snackamat-content">
+        <nuxt />
+      </div>
     </v-content>
   </v-app>
 </template>
@@ -17,6 +19,11 @@
   justify-content: space-between;
   flex-grow: 1;
   align-items: center;
+  padding: 8px;
+  height: 100%;
+}
+.snackamat-content {
+  padding-top: 12px;
 }
 </style>
 
