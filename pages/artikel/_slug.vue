@@ -106,15 +106,16 @@
                 :key="relatedArticle.sys.id"
               >
                 <SearchResult
-                  v-if="$vuetify.breakpoint.sm"
+                  v-show="$vuetify.breakpoint.sm"
                   :article="relatedArticle"
                 ></SearchResult>
 
                 <ArticlePreview
-                  v-if="
+                  v-show="
                     $vuetify.breakpoint.xsOnly || $vuetify.breakpoint.mdAndUp
                   "
                   :article="relatedArticle"
+                  headerType="h4"
                 ></ArticlePreview>
               </v-flex>
             </v-layout>

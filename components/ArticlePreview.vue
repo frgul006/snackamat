@@ -11,10 +11,7 @@
           :src="
             article.fields.image.fields.file.url + '?fit=scale&w=350&h=300&q=75'
           "
-          :lazy-src="
-            article.fields.image.fields.file.url +
-              '?fm=jpg&fl=progressive&w=568&h=200&fit=fill&q=25'
-          "
+          :lazy-src="require('~/assets/placeholder.svg')"
           :srcset="
             `
           ${article.fields.image.fields.file.url}?w=1100&h=400&fit=fill&q=75 1100w,
@@ -30,7 +27,16 @@
         ></v-img>
         <v-card-title>
           <div>
-            <h4 class="snackamat-article-preview__title">
+            <h3
+              v-if="headerType === 'h3'"
+              class="snackamat-article-preview__title"
+            >
+              {{ article.fields.title }}
+            </h3>
+            <h4
+              v-if="headerType === 'h4'"
+              class="snackamat-article-preview__title"
+            >
               {{ article.fields.title }}
             </h4>
             <p class="snackamat-article-preview__date">
@@ -56,6 +62,8 @@ import { Article } from '~/types'
 export default class ArticlePreview extends Vue {
   @Prop({ type: Object, default: null })
   public article!: Article
+
+  @Prop({ type: String, default: 'h3' }) public headerType!: string
 }
 </script>
 

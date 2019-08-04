@@ -124,12 +124,12 @@ export default class SearchResult extends Vue {
   }
 
   &__title {
-    font-size: 16px;
+    font-size: 1rem;
     color: #373f49;
   }
 
   &__summary {
-    font-size: 14px;
+    font-size: 0.875rem;
     margin: 0;
   }
 }
