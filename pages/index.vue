@@ -38,7 +38,7 @@ export default class Index extends Vue {
   @articles.Getter('articles') public articles!: Article[]
 
   public head() {
-    const canonical = `https://snackamat.se`
+    const canonical = `https://snackamat.se/`
 
     return {
       title: `start`,
@@ -46,7 +46,7 @@ export default class Index extends Vue {
         {
           hid: 'description',
           name: 'description',
-          content: 'snackamat.se is a site dedicated to food.'
+          content: 'Receptsamling och allmänna artiklar rörande mat.'
         }
       ],
       link: [{ rel: 'canonical', href: canonical }]
