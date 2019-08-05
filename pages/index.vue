@@ -56,5 +56,9 @@ export default class Index extends Vue {
   public async fetch({ store, params }) {
     await store.dispatch('articles/getArticles')
   }
+
+  public transition(to, from) {
+    return 'slide-right'
+  }
 }
 </script>

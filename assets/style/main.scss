@@ -1,0 +1,31 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.container {
+  transition: all 0.25s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(100px, 0);
+}
+
+.slide-right-enter,
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate(-100px, 0);
+}

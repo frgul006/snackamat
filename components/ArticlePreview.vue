@@ -11,7 +11,6 @@
           :src="
             article.fields.image.fields.file.url + '?fit=scale&w=350&h=300&q=75'
           "
-          :lazy-src="require('~/assets/placeholder.svg')"
           :srcset="
             `
           ${article.fields.image.fields.file.url}?w=1100&h=400&fit=fill&q=75 1100w,

@@ -41,7 +41,7 @@
         <div class="snackamat-article__metadata">
           <div
             class="snackamat-article__cuisines"
-            v-if="article.fields.cuisines.length > 0"
+            v-if="article.fields.cuisines && article.fields.cuisines.length > 0"
           >
             <h3 class="sr-only">Kök</h3>
             <ul>
@@ -59,7 +59,7 @@
           </div>
           <div
             class="snackamat-article__methods"
-            v-if="article.fields.methods.length > 0"
+            v-if="article.fields.methods && article.fields.methods.length > 0"
           >
             <h3 class="sr-only">Matlagningsmetoder</h3>
             <ul>
@@ -77,7 +77,7 @@
           </div>
           <div
             class="snackamat-article__diets"
-            v-if="article.fields.diets.length > 0"
+            v-if="article.fields.diets && article.fields.diets.length > 0"
           >
             <h3 class="sr-only">Dieter</h3>
             <ul>
@@ -275,6 +275,10 @@ export default class Slug extends Vue {
 
   public async fetch({ store, params }) {
     await store.dispatch('article/getArticleBySlug', params.slug)
+  }
+
+  public transition(to, from) {
+    return 'slide-left'
   }
 
   public get richTextHtml(): string {
